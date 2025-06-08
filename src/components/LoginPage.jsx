@@ -43,7 +43,7 @@ const LoginPage = () => {
 
       setTimeout(() => {
         setNotification(null);
-        navigate("/home");
+        navigate("/");
       }, 1000);
     } catch (error) {
       console.error("Login error:", error); // Log the full error for debugging

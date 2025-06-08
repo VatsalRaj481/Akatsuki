@@ -203,7 +203,7 @@ const OrderComponent = () => {
     <div className="flex flex-col min-h-screen bg-gray-900 text-white">
       {/* Navbar */}
       <header className="absolute top-0 left-0 flex items-center gap-3 p-5 border-b border-gray-700 w-full">
-        <Link to="/home">
+        <Link to="/">
           <svg className="w-10 h-10 text-white" viewBox="0 0 48 48" fill="none">
             <path
               d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
