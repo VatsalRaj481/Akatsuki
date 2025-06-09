@@ -12,7 +12,7 @@ const Logout = ({ className }) => { // Accept className as a prop
       setNotification({ message: "Logout successful!", type: "success" });
       setTimeout(() => {
         setNotification(null);
-        navigate("/");
+        navigate("/login");
       }, 1500);
     } catch (error) {
       setNotification({ message: "Logout failed! Please try again.", type: "error" });

@@ -72,7 +72,12 @@ const OrderComponent = () => {
           } catch (err) {
             console.error("Error fetching additional order details:", err);
             // Return with default values if fetching additional details fails
-            return { ...order, productPrice: 0, totalPrice: 0, productName: order.productName || "Unknown Product" };
+            return {
+              ...order,
+              productPrice: 0,
+              totalPrice: 0,
+              productName: order.productName || "Unknown Product",
+            };
           }
         })
       );
@@ -213,7 +218,16 @@ const OrderComponent = () => {
         </Link>
         <h1 className="text-2xl font-bold">IMS</h1>
         <div className="flex items-center gap-6 ml-auto">
+          {/* Search bar */}
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          {/* Add Order button - moved here */}
+          <button
+            onClick={() => setShowForm(true)}
+            className="h-10 px-4 bg-green-600 rounded-xl hover:bg-green-700 transition duration-200"
+          >
+            Add Order
+          </button>
+          {/* Profile link */}
           <Link to="/profile">
             <img
               className="w-10 h-10 rounded-full border border-gray-500"
@@ -242,7 +256,8 @@ const OrderComponent = () => {
               <tr className="border-b border-gray-700">
                 <th className="p-3">Order ID</th>
                 <th className="p-3">Date</th>
-                <th className="p-3">Product Name</th> {/* Changed from Product */}
+                <th className="p-3">Product Name</th>{" "}
+                {/* Changed from Product */}
                 <th className="p-3">Price</th>
                 <th className="p-3">Quantity</th>
                 <th className="p-3">Total</th>
@@ -260,7 +275,8 @@ const OrderComponent = () => {
                     ).toLocaleDateString()}
                   </td>
                   <td className="p-3">
-                    {order.productName ?? "Unknown Product"} {/* Display product name */}
+                    {order.productName ?? "Unknown Product"}{" "}
+                    {/* Display product name */}
                   </td>
                   <td className="p-3">
                     ${order.productPrice?.toFixed(2) ?? "0.00"}
@@ -298,62 +314,57 @@ const OrderComponent = () => {
               ))}
             </tbody>
           </table>
-          <button
-            onClick={() => setShowForm(true)}
-            className="fixed bottom-10 right-10 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg shadow-lg z-30"
-          >
-            Add Order
-          </button>
-          {showForm && (
-            <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-              <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-full max-w-md mx-auto relative transform transition-all duration-300 ease-out scale-100 opacity-100">
-                <button
-                  onClick={() => setShowForm(false)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
-                  aria-label="Close"
-                >
-                  &times;
-                </button>
-                <h3 className="text-2xl font-semibold mb-6 text-center text-white">
-                  Add New Order
-                </h3>
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="customerId"
-                    placeholder="Customer ID"
-                    value={orderData.customerId}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-green-500 focus:border-transparent text-white placeholder-gray-400"
-                  />
-                  <input
-                    type="text"
-                    name="productId"
-                    placeholder="Product ID"
-                    value={orderData.productId}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-green-500 focus:border-transparent text-white placeholder-gray-400"
-                  />
-                  <input
-                    type="number"
-                    name="quantity"
-                    placeholder="Quantity"
-                    value={orderData.quantity}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-green-500 focus:border-transparent text-white placeholder-gray-400"
-                  />
-                </div>
-                <button
-                  onClick={handleSubmit}
-                  className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg mt-6 transition duration-200"
-                >
-                  Create Order
-                </button>
-              </div>
-            </div>
-          )}
+          {/* The "Add Order" button that was fixed to the bottom-right has been removed from here. */}
         </div>
       </div>
+      {showForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-full max-w-md mx-auto relative transform transition-all duration-300 ease-out scale-100 opacity-100">
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-semibold mb-6 text-center text-white">
+              Add New Order
+            </h3>
+            <div className="space-y-4">
+              <input
+                type="text"
+                name="customerId"
+                placeholder="Customer ID"
+                value={orderData.customerId}
+                onChange={handleInputChange}
+                className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-green-500 focus:border-transparent text-white placeholder-gray-400"
+              />
+              <input
+                type="text"
+                name="productId"
+                placeholder="Product ID"
+                value={orderData.productId}
+                onChange={handleInputChange}
+                className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-green-500 focus:border-transparent text-white placeholder-gray-400"
+              />
+              <input
+                type="number"
+                name="quantity"
+                placeholder="Quantity"
+                value={orderData.quantity}
+                onChange={handleInputChange}
+                className="w-full p-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-green-500 focus:border-transparent text-white placeholder-gray-400"
+              />
+            </div>
+            <button
+              onClick={handleSubmit}
+              className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg mt-6 transition duration-200"
+            >
+              Create Order
+            </button>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   );

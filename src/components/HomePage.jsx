@@ -140,7 +140,7 @@ const HomePage = () => {
       <nav className="flex items-center justify-between p-4 bg-gray-900 shadow-xl border-b border-gray-700">
         {/* Top Left - Logo, Title & Tagline */}
         <div className="flex items-center gap-4">
-          <Link to="/home" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <svg
               className="w-10 h-10 text-blue-400 cursor-pointer hover:scale-110 transition duration-300 ease-in-out"
               viewBox="0 0 48 48"
@@ -156,7 +156,7 @@ const HomePage = () => {
               <h1 className="text-2xl font-extrabold bg-gradient-to-r from-blue-300 to-purple-400 text-transparent bg-clip-text leading-none">
                 IMS
               </h1>
-              <p className="text-xs text-gray-400 mt-1">Intelligent Management System</p>
+              <p className="text-xs text-gray-400 mt-1">Inventory Management System</p>
             </div>
           </Link>
         </div>
