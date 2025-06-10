@@ -11,6 +11,7 @@ import ProductComponent from "./components/Product";
 import OrderComponent from "./components/Order";
 import SupplierComponent from "./components/Supplier";
 import Reports from "./components/Reports";
+import AboutUs from "./AboutUs";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/product" element={<ProductComponent />} />
           <Route path="/order" element={<OrderComponent/>}/>
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/about" element={<AboutUs/>}/>
           <Route path="/suppliers" element={<SupplierComponent/>}/>
           <Route path="/reports" element={<Reports/>}/>
         </Routes>
