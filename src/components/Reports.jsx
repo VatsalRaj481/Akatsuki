@@ -613,9 +613,6 @@ const ReportGenerator = () => {
                       <th className="p-3 font-semibold text-sm uppercase tracking-wider">
                         Products Supplied
                       </th>
-                      <th className="p-3 font-semibold text-sm uppercase tracking-wider">
-                        Total Quantity Supplied
-                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -632,9 +629,6 @@ const ReportGenerator = () => {
                         </td>
                         <td className="p-3 text-sm text-gray-200">
                           {item.productsSupplied}
-                        </td>
-                        <td className="p-3 text-sm text-gray-200">
-                          {item.totalQuantitySupplied}
                         </td>
                       </tr>
                     ))}
