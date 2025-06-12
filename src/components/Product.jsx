@@ -25,8 +25,8 @@ const ProductPage = () => {
 
   // New state for description modal
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
-  const [selectedProductDescription, setSelectedProductDescription] = useState("");
-
+  const [selectedProductDescription, setSelectedProductDescription] =
+    useState("");
 
   const token = localStorage.getItem("userToken");
 
@@ -230,10 +230,9 @@ const ProductPage = () => {
 
   // Function to open description modal
   const openDescriptionModal = (description) => {
-      setSelectedProductDescription(description);
-      setShowDescriptionModal(true);
+    setSelectedProductDescription(description);
+    setShowDescriptionModal(true);
   };
-
 
   // Memoized filtering of products based on search term
   const filteredProducts = useMemo(() => {
@@ -325,14 +324,15 @@ const ProductPage = () => {
                   {product.description || "No description available"}
                 </p>
                 {/* Add Read More button if description is long */}
-                {product.description && product.description.length > 120 && ( // 120 chars is an estimation for 3 lines
-                  <button
-                    onClick={() => openDescriptionModal(product.description)}
-                    className="text-blue-400 hover:underline text-sm mb-2 self-start"
-                  >
-                    Read More
-                  </button>
-                )}
+                {product.description &&
+                  product.description.length > 120 && ( // 120 chars is an estimation for 3 lines
+                    <button
+                      onClick={() => openDescriptionModal(product.description)}
+                      className="text-blue-400 hover:underline text-sm mb-2 self-start"
+                    >
+                      Read More
+                    </button>
+                  )}
                 <p className="text-sm font-bold text-blue-400 mb-1">
                   Price: ${product.price?.toFixed(2) ?? "N/A"}
                 </p>
@@ -463,23 +463,23 @@ const ProductPage = () => {
 
         {/* New: Description Modal */}
         {showDescriptionModal && (
-            <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in">
-                <div className="bg-gray-900 border border-gray-700 p-6 rounded-xl shadow-2xl w-full max-w-lg mx-auto relative transform transition-all duration-300 ease-out scale-100 opacity-100 animate-slide-up">
-                    <button
-                        onClick={() => setShowDescriptionModal(false)}
-                        className="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-light leading-none"
-                        aria-label="Close"
-                    >
-                        &times;
-                    </button>
-                    <h3 className="text-3xl font-bold mb-6 text-center text-white bg-gradient-to-r from-blue-300 to-purple-400 text-transparent bg-clip-text">
-                        Product Description
-                    </h3>
-                    <div className="text-gray-300 text-base leading-relaxed max-h-96 overflow-y-auto pr-2">
-                        {selectedProductDescription || "No description available."}
-                    </div>
-                </div>
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in">
+            <div className="bg-gray-900 border border-gray-700 p-6 rounded-xl shadow-2xl w-full max-w-lg mx-auto relative transform transition-all duration-300 ease-out scale-100 opacity-100 animate-slide-up">
+              <button
+                onClick={() => setShowDescriptionModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-light leading-none"
+                aria-label="Close"
+              >
+                &times;
+              </button>
+              <h3 className="text-3xl font-bold mb-6 text-center text-white bg-gradient-to-r from-blue-300 to-purple-400 text-transparent bg-clip-text">
+                Product Description
+              </h3>
+              <div className="text-gray-300 text-base leading-relaxed max-h-96 overflow-y-auto pr-2">
+                {selectedProductDescription || "No description available."}
+              </div>
             </div>
+          </div>
         )}
 
         {notification && (
